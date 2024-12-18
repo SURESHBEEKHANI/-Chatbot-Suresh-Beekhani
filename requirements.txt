@@ -1,0 +1,12 @@
+sentence-transformers
+langchain
+flask
+pypdf
+python-dotenv
+qdrant-client
+langchain-qdrant
+langchain-groq
+langchain_community
+langchain_experimental
+setuptools
+-e .
