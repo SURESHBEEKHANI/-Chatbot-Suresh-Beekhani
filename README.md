@@ -23,32 +23,3 @@ python -m venv venv
 source venv/bin/activate  # On Windows use `venv\Scripts\activate`
 
 pip install -r requirements.txt
-
-qdrant_api_key=your_qdrant_api_key
-groq_API_KEY=your_groq_api_key
-
-python app.py
-
-Chatbot-Suresh-Beekhani/
-│
-├── app.py                  # Main application file
-├── requirements.txt        # Python dependencies
-├── .env                    # Environment variables
-├── static/                 # Static files (CSS, JS, images)
-│   ├── styles.css
-│   └── script.js
-├── templates/              # HTML templates
-│   └── index.html
-├── src/                    # Source files
-│   ├── helper.py
-│   ├── prompt.py
-│   └── __pycache__/
-└── README.md               # Project documentation
-
-Contributing
-Contributions are welcome! Please fork the repository and submit a pull request for any improvements or bug fixes.
-
-License
-This project is licensed under the MIT License. See the LICENSE file for details. ```
-
-
