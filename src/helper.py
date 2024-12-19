@@ -1,7 +1,7 @@
 from langchain_community.document_loaders import DirectoryLoader
-from langchain.document_loaders import PyPDFLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain.embeddings import HuggingFaceEmbeddings
+from langchain_community.document_loaders import PyPDFLoader
+from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_qdrant import QdrantVectorStore
 
 def load_and_split_pdfs(folder_path, chunk_size, chunk_overlap):
@@ -40,3 +40,4 @@ def load_and_split_pdfs(folder_path, chunk_size, chunk_overlap):
 def download_hugging_face_embeddings():
     embeddings=HuggingFaceEmbeddings(model_name='BAAI/bge-small-en-v1.5')
     return embeddings
+
