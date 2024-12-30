@@ -1,6 +1,7 @@
 from flask import Flask, render_template, jsonify, request  # Import Flask for web server and rendering templates
-from src.helper import download_hugging_face_embeddings  # Import the function to download HuggingFace embeddings
+# Import the function to download HuggingFace embeddings
 from langchain_qdrant import QdrantVectorStore
+from src.helper import get_google_embeddings
 from langchain_groq import ChatGroq
 from langchain.chains import create_retrieval_chain  # Import chain to link document retrieval and model for Q&A tasks
 from langchain.chains.combine_documents import create_stuff_documents_chain  # Import document processing chain for Q&A
@@ -26,7 +27,7 @@ os.environ["groq_API_KEY"] = groq_API_KEY
 os.environ["qdrant_api_key"] = qdrant_api_key
 
 # Download embeddings from Hugging Face
-embeddings = download_hugging_face_embeddings()
+embeddings =  get_google_embeddings()
 
 # Initialize Qdrant vector store
 qdrant = QdrantVectorStore.from_existing_collection(

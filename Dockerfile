@@ -1,33 +1,29 @@
-# Use the official Python 3.12 image as the base image
-FROM python:3.12-slim
+FROM python:3.10
 
-# Set the working directory inside the container
+## set the working directory to /code
 WORKDIR /code
 
-# Copy the requirements.txt file into the container
-COPY requirements.txt /code/requirements.txt
+## Copy the current directory contents in the container at /code
+COPY ./requirements.txt /code/requirements.txt
 
-# Install the Python dependencies
+## Install the requirements.txt
 RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 
-# Set environment variables for the user
-ENV HOME=/home/user \
-    PATH=/home/user/.local/bin:$PATH
-
-# Create a new user named "user" and set the home directory
-RUN useradd -m user
-
+# Set up a new user named "user" 
+RUN useradd user
 # Switch to the "user" user
 USER user
+
+# Set home to the user's home directory
+
+ENV HOME=/home/user \
+	PATH=/home/user/.local/bin:$PATH
 
 # Set the working directory to the user's home directory
 WORKDIR $HOME/app
 
-# Copy the application code into the container, preserving file permissions
-COPY --chown=user:user . $HOME/app
+# Copy the current directory contents into the container at $HOME/app setting the owner to the user
+COPY --chown=user . $HOME/app
 
-# Expose the port the app will run on
-EXPOSE 8080
-
-# Command to run the application using Gunicorn
-CMD ["gunicorn", "--bind", "0.0.0.0:8080", "app:app"]
+## Start the FASTAPI App on port 7860
+CMD ["gunicorn", "--bind", "0.0.0.0:7860", "app:app"]
