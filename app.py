@@ -17,14 +17,16 @@ app = Flask(__name__)  # Create a Flask app instance to handle web requests
 load_dotenv()  # Load environment variables from a .env file to manage sensitive data like API keys
 
 # Retrieve environment variables
-qdrant_api_key = os.environ.get('qdrant_api_key')
-groq_API_KEY = os.environ.get('groq_API_KEY')
+qdrant_api_key = os.environ.get('AIzaSyBJAXW65uVAwHP6iEKyw-V4YFN5ORQ6_p0')
+groq_API_KEY = os.environ.get('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')
 qdrant_url = "https://e92b3638-9cd8-43e3-9c5d-a049f560fab2.us-east4-0.gcp.cloud.qdrant.io"
 collection_name = "skchatbot"
+google_api_key= os.environ.get('AIzaSyBJAXW65uVAwHP6iEKyw-V4YFN5ORQ6_p0')
 
 # Ensure API keys are set in the environment
 os.environ["groq_API_KEY"] = groq_API_KEY
 os.environ["qdrant_api_key"] = qdrant_api_key
+os.environ["google_api_key"] = google_api_key
 
 # Download embeddings from Hugging Face
 embeddings =  get_google_embeddings()
